@@ -117,7 +117,7 @@ class ExtrasFormatter(logging.Formatter):
         extras = self.extras_separator.join(
             self.extras_template.format(k, v)
             for k, v in record._daiquiri_extra.items()
-            if k != '_daiquiri_extra' and k not in self.keywords
+            if k not in self.keywords + ['_daiquiri_extra', 'level']
         )
         if extras != '':
             extras = self.extras_prefix + extras + self.extras_suffix
